@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Guru\SiswaTertanda;
 
-use App\Models\SiswaTertanda;
+use App\Models\SiswaTertanda; 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;

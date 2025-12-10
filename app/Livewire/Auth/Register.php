@@ -12,6 +12,7 @@ class Register extends Component
     public $email;
     public $password;
     public $password_confirmation;
+    public $role;
 
     public function register()
     {
@@ -29,8 +30,20 @@ class Register extends Component
 
         session()->flash('success', 'Akun berhasil dibuat! Silakan login.');
 
-        return redirect('/login');
+        return redirect();
     }
+
+    public function updatedRole($value)
+    {
+        if ($value === 'guru') {
+            return redirect('guru/register-guru');
+        }
+
+        if ($value === 'siswa') {
+            return redirect('siswa/register-siswa');
+        }
+    }
+
 
     public function render()
     {

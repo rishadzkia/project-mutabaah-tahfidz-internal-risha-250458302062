@@ -15,7 +15,7 @@ class Show extends Component
         return view('livewire.siswa.murottal.show');
     }
 
-    public function mount()
+    public function mount() 
     {
         $this->murottal = Murottal::all();
     }

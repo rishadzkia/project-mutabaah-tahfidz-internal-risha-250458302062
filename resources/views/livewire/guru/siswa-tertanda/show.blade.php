@@ -10,11 +10,11 @@
                         {{ session('message') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
-                @endif
+                @endif 
 
-                <div class="table-responsive">
+                <div class="table-responsive"> 
                     <table class="table table-hover">
-                        <thead>
+                        <thead> 
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Siswa</th>

@@ -19,6 +19,7 @@
                             <th>Nama Guru</th>
                             <th>Judul Pengumuman</th>
                             <th>Isi Pengumuman</th>
+                            <th>Tanggal Dibuat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <td class="text-wrap" style="max-width: 300px;">
                                 {{ $item->isi }} 
                             </td>
+                            <td>{{ $item->created_at->format('d M Y') }}</td>
 
                             <td class="d-flex gap-2">
                                <button 

@@ -16,7 +16,7 @@ class Show extends Component
     public $search = '';
     public $filterMonth = '';
     public $filterDate = '';
-    
+
     public function render()
     {
         $query = Hafalan::with('siswa.user')
@@ -36,7 +36,7 @@ class Show extends Component
         }
 
         $this->responseHafalan = $query->orderBy('created_at', 'desc')->get();
-            
+
         return view('livewire.guru.response-hafalan.show');
     }
 
@@ -45,21 +45,32 @@ class Show extends Component
         $hafalan = Hafalan::find($hafalanId);
         if ($hafalan) {
             $hafalan->status = $status;
-            $hafalan->save(); 
+            $hafalan->save();
             session()->flash('message', 'Status berhasil diupdate!');
         }
     }
 
-    public function tandaiSiswa($hafalanId) 
+    public function tandaiSiswa($hafalanId)
     {
+        // Yang diubah yang disini
         $hafalan = Hafalan::with('siswa')->find($hafalanId);
         if ($hafalan) {
-            SiswaTertanda::Create([ 
+            $exists = SiswaTertanda::where('siswa_id', $hafalan->siswa_id)
+                ->where('hafalan_id', $hafalanId)
+                ->exists();
+
+            if ($exists) {
+                session()->flash('error', 'Hafalan siswa ini sudah ditandai sebelumnya!');
+                return;
+            }
+
+            SiswaTertanda::create([
                 'siswa_id' => $hafalan->siswa_id,
-                'guru_id' => Auth::user()->id(), 
-                'hafalan_id' => $hafalanId, 
+                'guru_id' => Auth::id(),
+                'hafalan_id' => $hafalanId,
                 'keterangan' => 'Ditandai dari response hafalan'
-            ]); 
+            ]);
+
             session()->flash('message', 'Siswa berhasil ditandai!');
         }
     }

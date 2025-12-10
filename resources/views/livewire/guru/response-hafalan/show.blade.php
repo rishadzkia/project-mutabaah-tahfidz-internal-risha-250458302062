@@ -1,6 +1,6 @@
- <div x-data>
+<div x-data>
 
-    <div class="col-lg-12 grid-margin stretch-card">
+    <div class="col-lg-12 grid-margin stretch-card"> 
         <div class="card border-0 rounded-4 shadow-sm">
             <div class="card-body">
 
@@ -10,10 +10,18 @@
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('message') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div> 
+                @endif 
+
+                {{-- Tambahkan alert error --}}
+                @if (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 @endif
 
-                <!-- Search Box -->
+                <!-- Search Box --> 
                 <div class="mb-4">
                     <input type="text" 
                         wire:model.live="search" 
@@ -79,7 +87,7 @@
                                     <td class="text-center">
                                         <button class="btn btn-warning btn-sm px-3 py-2 rounded-3 shadow-sm" 
                                             wire:click="tandaiSiswa({{ $item->id }})"
-                                            wire:confirm="Yakin ingin menandai siswa ini?">
+                                            wire:confirm="Yakin ingin menandai hafalan siswa ini?">
                                             <i class="icon-flag"></i> Tandai 
                                         </button>
                                     </td>

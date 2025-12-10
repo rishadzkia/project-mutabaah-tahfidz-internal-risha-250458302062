@@ -1,89 +1,61 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;  
-            background: #f0f2f5;
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-box {
-            background: white;
-            padding: 25px;
-            width: 320px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0 15px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background: #45a049;
-        }
-
-        .register-link {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .register-link a {
-            color: #1E88E5;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .register-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script> 
 </head>
+<body 
+    class="min-h-screen bg-cover bg-center flex items-center justify-center" 
+      style="background-color: #7ab8c3;"
+ 
 
-<body>
+>
 
-    <div class="login-box">
-        <h2>Login</h2>
-        <form action="#" wire:submit.prevent="login" method="POST">
-            <input type="email" wire:model="email" name="email" placeholder="Email" required />
-            <input type="password" wire:model="password" name="password" placeholder="Password" required />
+    <!-- Container -->
+    <div class="relative bg-black/40 backdrop-blur-sm p-6 w-72 rounded-2xl text-center">
 
-            <button type="submit">Login</button>
+        <!-- Profile Image -->
+        <img src="{{ asset('img/m3.png') }}" 
+             class="absolute w-20 h-20 top-[-40px] left-1/2 -translate-x-1/2 rounded-full object-cover shadow-lg">
+
+        <h1 class="text-white text-xl mt-10 mb-5 font-semibold">Login</h1>
+
+        <form action="#" wire:submit.prevent="login" method="POST" class="flex flex-col items-center">
+
+          
+            <input 
+                type="text" 
+                placeholder="Email"
+                wire:model="email"
+                class="w-full bg-transparent border-b-2 border-white text-white px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
+            >
+
+            <!-- Input Password -->
+            <input 
+                type="password" 
+                placeholder="Password"
+                wire:model="password"
+                class="w-full bg-transparent border-b-2 border-white text-white px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
+            >
+
+            <!-- Button -->
+            <button 
+                type="submit"
+                wire
+                class="w-48 py-2 rounded-full bg-white hover:bg-indigo-500 hover:text-white transition font-semibold mt-2"
+            >
+                Login
+            </button>
+
         </form>
 
-        <!-- LINK REGISTRASI KECIL -->
-        <div class="register-link">
-            Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a>
-        </div>
+        <!-- Forgot Link -->
+        <a href="{{ route('register') }}" class="text-white text-sm mt-4 block hover:text-indigo-400">Registrasi Disini!</a>
+
     </div>
 
 </body>

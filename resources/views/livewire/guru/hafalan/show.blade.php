@@ -7,7 +7,7 @@
                
                 <h4 class="card-title fw-bold mb-4 text-primary"> Data Hafalan Siswa</h4>
 
-               
+                
                 <div class="mb-4">
                     <input type="text" 
                         wire:model.live="search" 

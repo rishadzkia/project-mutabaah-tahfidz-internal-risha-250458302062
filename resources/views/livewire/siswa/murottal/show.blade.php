@@ -13,21 +13,31 @@
                     <div class="accordion-item border rounded-3 mb-3 shadow-sm">
 
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed ayat-accordion"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#c{{ $index }}">
-                                <span class="flex-grow-1 fw-semibold">{{ $item->surah }}</span>
+                            <button 
+                                class="accordion-button collapsed ayat-accordion"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#c{{ $index }}"
+                            >
+                                <span class="flex-grow-1 fw-semibold">
+                                    {{ $item->surah }}
+                                </span>
                             </button>
                         </h2>
 
-                        <div id="c{{ $index }}" class="accordion-collapse collapse"
-                             data-bs-parent="#accordionFlushExample">
+                        <div 
+                            id="c{{ $index }}" 
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample"
+                        >
                             <div class="accordion-body">
 
                                 <!-- AUDIO PLAYER -->
                                 <audio controls class="w-100 rounded-3 shadow-sm">
-                                    <source src="{{ $item->file_url }}" type="audio/mp3">
+                                    <source 
+                                        src="{{ asset('/storage/app/public/audio/murottal' . $item->file_url) }}" 
+                                        type="audio/mp3"
+                                    >
                                 </audio>
 
                                 <!-- Deskripsi -->
@@ -45,8 +55,7 @@
 
         </div>
 
-        <div class="card-footer text-body-secondary">
-        </div>
+        <div class="card-footer text-body-secondary"></div>
     </div>
 
 </div>

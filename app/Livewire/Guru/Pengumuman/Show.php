@@ -13,16 +13,21 @@ class Show extends Component
     public $pengumuman;
     public function render()
     {
-        return view('livewire.guru.pengumuman.show');
+        $pengumuman = Pengumuman::where('created_at', '>=', now()->subDays(2))
+            ->get();
+        $pengumuman = Pengumuman::all();
+        return view('livewire.guru.pengumuman.show', [
+            'pengumuman' => $pengumuman,
+        ]);
     }
-    public function mount(){ 
-        $this->pengumuman = Pengumuman::with([
-            'guru.user', 
-
-        ])->get();
+    public function mount()
+    {
+        $this->pengumuman = Pengumuman::with(['guru.user'])
+            ->where('created_at', '>=', now()->subDays(2))
+            ->get();
     }
 
-    public function destroy($id)
+    public function destroy($id) 
     {
         $pengumuman = Pengumuman::findOrFail($id);
         $pengumuman->delete();

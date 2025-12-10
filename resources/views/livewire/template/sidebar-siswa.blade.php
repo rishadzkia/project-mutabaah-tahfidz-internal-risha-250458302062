@@ -1,7 +1,7 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item navbar-brand-mini-wrapper">
-              <a class="nav-link navbar-brand" href="index.html"></a>
+              <a class="nav-link navbar-brand" href="{{ route('welcome') }}"></a>
             </li>
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
@@ -13,6 +13,7 @@
                   <p class="profile-name">{{ Auth()->user()->name }}</p>
                   <p class="designation">{{ Auth()->user()->role }}</p>
                 </div>
+                
                
               </a> 
             </li>
