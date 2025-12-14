@@ -25,7 +25,11 @@
                    <div class="d-flex justify-content-center mt-4">
     <div style="width: 80%;">
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators"
+     class="carousel slide"
+     data-bs-ride="carousel" 
+     data-bs-interval="3000" 
+     data-bs-pause="false">
 
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
@@ -33,9 +37,9 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
             </div>
             
-            <div class="carousel-inner carousel-custom rounded-3 shadow-sm">
+            <div class="carousel-inner carousel-custom rounded-3 shadow-sm"> 
                  @foreach ($motivasi as $item)
-                <div class="carousel-item active">
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <img src="{{ asset('/storage/motivasi/' . $item->image_url) }}" class="d-block w-100" alt="Slide 1">
                 </div>
             

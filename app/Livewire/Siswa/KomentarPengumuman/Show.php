@@ -4,25 +4,29 @@ namespace App\Livewire\Siswa\KomentarPengumuman;
 
 use App\Models\KomentarPengumuman;
 use App\Models\Pengumuman;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;  
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class Show extends Component
+class Show extends Component  
 {
     #[Layout('components.layouts.base')]
+    #[Title('Halaman Pengumuman')]
     public $komentar;
     public $pengumuman_id;
-    public $deleteId = null; // untuk modal hapus
-
+    public $deleteId = null;   
     public function mount()
     {
         $this->komentar = '';
     }
 
-    public function render()
-    {
-        $pengumumans = Pengumuman::all();
+    public function render() 
+    { 
+        // Pengumuman hanya tampil 2 hari terakhir
+        $pengumumans = Pengumuman::where('created_at', '>=', now()->subDays(2))
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $komentars = KomentarPengumuman::with('siswa.user')
             ->when($this->pengumuman_id, function ($query) {
@@ -33,9 +37,10 @@ class Show extends Component
 
         return view('livewire.siswa.komentar-pengumuman.show', [
             'pengumumans' => $pengumumans,
-            'komentars' => $komentars,
+            'komentars' => $komentars, 
         ]);
-    }
+    } 
+
 
     public function create()
     {
@@ -62,17 +67,17 @@ class Show extends Component
 
         $this->komentar = '';
         session()->flash('message', 'Komentar berhasil ditambahkan!');
-        return redirect()->route('siswa.show-komentar');
+        return redirect()->route('siswa.show-komentar');  
     }
 
     public function confirmDelete($id)
-    {
-        $this->deleteId = $id;
+    { 
+        $this->deleteId = $id; 
     }
 
     public function deleteKomentar($id)
     {
-        $komentar = KomentarPengumuman::findOrFail($id);
+        $komentar = KomentarPengumuman::findOrFail($id); 
 
         $user = Auth::user(); 
         $siswa_id = $user->siswa->id ?? null; 
@@ -83,6 +88,6 @@ class Show extends Component
         }
         return redirect()->route('siswa.show-komentar');
 
-        $this->deleteId = null; 
+        
     }
 }

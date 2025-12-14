@@ -7,6 +7,7 @@
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script> 
+    @livewireStyles
 </head>
 <body 
     class="min-h-screen bg-cover bg-center flex items-center justify-center" 
@@ -19,12 +20,14 @@
     <div class="relative bg-black/40 backdrop-blur-sm p-6 w-72 rounded-2xl text-center">
 
         <!-- Profile Image -->
-        <img src="{{ asset('img/m3.png') }}" 
-             class="absolute w-20 h-20 top-[-40px] left-1/2 -translate-x-1/2 rounded-full object-cover shadow-lg">
+        <a href="/">
+    <img src="{{ asset('img/m3.png') }}" 
+         class="absolute w-20 h-20 top-[-40px] left-1/2 -translate-x-1/2 rounded-full object-cover shadow-lg">
+</a>
 
         <h1 class="text-white text-xl mt-10 mb-5 font-semibold">Login</h1>
 
-        <form action="#" wire:submit.prevent="login" method="POST" class="flex flex-col items-center">
+        <form  wire:submit.prevent="login" class="flex flex-col items-center">
 
           
             <input 
@@ -45,7 +48,7 @@
             <!-- Button -->
             <button 
                 type="submit"
-                wire
+                
                 class="w-48 py-2 rounded-full bg-white hover:bg-indigo-500 hover:text-white transition font-semibold mt-2"
             >
                 Login
@@ -57,6 +60,6 @@
         <a href="{{ route('register') }}" class="text-white text-sm mt-4 block hover:text-indigo-400">Registrasi Disini!</a>
 
     </div>
-
+@livewireScripts
 </body>
 </html>

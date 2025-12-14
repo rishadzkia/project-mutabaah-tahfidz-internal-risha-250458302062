@@ -7,12 +7,14 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Livewire\Attributes\Title;
 
 class Show extends Component
 {
 
  
     #[Layout('components.layouts.base')]
+    #[Title('Halaman Hafalan')]
     public $hafalan;
     public function render()
     {

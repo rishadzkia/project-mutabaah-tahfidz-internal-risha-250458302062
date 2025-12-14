@@ -5,11 +5,13 @@ namespace App\Livewire\Guru\Pengumuman;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Show extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Halaman Pengumuman')]
     public $pengumuman;
     public function render()
     {

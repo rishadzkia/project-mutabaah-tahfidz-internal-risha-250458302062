@@ -48,3 +48,4 @@ class MurottalResource extends Resource
         ];
     }
 }
+ 

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pengumuman & Komentar</title>
+    <title>Pengumuman & Komentar</title> 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <script src="https://cdn.tailwindcss.com"></script> 
+</head> 
 <body>
 <div class="bg-white rounded-xl p-6 shadow max-w-5xl mx-auto mt-10">
+
+    @if ($pengumumans->isEmpty()) 
+    <p class="text-center text-gray-500 italic mb-4">
+        Tidak ada pengumuman saat ini.
+    </p>
+@endif
 
     <!-- Daftar Pengumuman -->
     @foreach ($pengumumans as $pengumuman)
         <div class="mb-6">
             <div class="flex justify-between items-center">
                 <p class="font-medium">Nama Guru: <span class="font-bold">{{ $pengumuman->guru->user->name }}</span></p>
-                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">Pending</span>
+             
             </div>
             <hr class="my-4">
             <h3 class="text-xl font-bold mt-2">{{ $pengumuman->judul }}</h3>
@@ -54,7 +60,7 @@
         <div class="bg-white shadow-md rounded-xl p-5">
             <h2 class="text-lg font-semibold mb-4">Riwayat Komentar</h2>
 
-            <div class="space-y-3">
+            <div class="space-y-3"> 
                 @foreach ($komentars as $komentar)
                     <div class="border rounded-lg p-3 bg-gray-50 flex justify-between items-start">
                         <div>

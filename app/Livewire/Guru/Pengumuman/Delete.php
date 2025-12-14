@@ -4,9 +4,12 @@ namespace App\Livewire\Guru\Pengumuman;
 
 use Livewire\Component;
 use App\Models\Pengumuman;
+use Livewire\Attributes\Title;
 
 class Delete extends Component
+
 {
+    #[Title('Hapus Pengumuman')]
     public $show = false;
     public $itemId;
     public $judul;

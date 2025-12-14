@@ -97,7 +97,7 @@
 
     <!-- HERO -->
     <section
-      id="home"
+      id="beranda"
       class="relative min-h-screen bg-cover bg-center flex items-center justify-center text-white pt-24"
       style="background-image: url('{{ asset('img/quran-header.jpg') }}')"
     >

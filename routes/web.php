@@ -11,7 +11,7 @@ use App\Livewire\Guru\Dashboard as GuruDashboard;
 use App\Livewire\Guru\Hafalan\Show;
 use App\Livewire\Guru\Pengumuman\Create; 
 use App\Livewire\Guru\Pengumuman\Update;
-use App\Livewire\Guru\Pengumuman\Show as PengumumanShow;
+use App\Livewire\Guru\Pengumuman\Show as PengumumanShow; 
 use App\Livewire\Guru\RegirterGuru;
 use App\Livewire\Guru\ResponseHafalan\Show as ResponseHafalanShow;
 use App\Livewire\Guru\SiswaTertanda\Show as SiswaTertandaShow;
@@ -43,7 +43,7 @@ Route::prefix('siswa')->middleware(['auth', 'siswa'])->group(function () {
 
 });
 
-// Guru
+// Guru 
 Route::prefix('guru')->middleware(['auth', 'guru'])->group(function () {
     Route::get('dashboard', GuruDashboard::class)->name('guru.dashboard');
     Route::get('register-guru', RegirterGuru::class)->name('guru.register');
@@ -61,3 +61,11 @@ Route::prefix('guru')->middleware(['auth', 'guru'])->group(function () {
 // Login
 Route::get('/login', Login::class)->name('login'); 
 Route::get('/register', Register::class)->name('register');
+
+Route::post('/admin/logout', function () {
+    Auth::logout();
+    session()->invalidate(); 
+    session()->regenerateToken();
+
+    return redirect('/'); 
+})->name('filament.logout');

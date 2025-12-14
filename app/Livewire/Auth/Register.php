@@ -2,16 +2,18 @@
 
 namespace App\Livewire\Auth;
 
-use Livewire\Component;
+use Livewire\Component; 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Title;
 
 class Register extends Component
 {
+    #[Title('Registrasi')]
     public $name;
     public $email;
     public $password;
-    public $password_confirmation;
     public $role;
 
     public function register()
@@ -19,28 +21,30 @@ class Register extends Component
         $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|same:password_confirmation',
+            'password' => 'required',
+            'role' => 'required|in:guru,siswa',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'role' => $this->role,
         ]);
+
+        
 
         session()->flash('success', 'Akun berhasil dibuat! Silakan login.');
 
-        return redirect();
-    }
+        Auth::login($user);
 
-    public function updatedRole($value)
-    {
-        if ($value === 'guru') {
-            return redirect('guru/register-guru');
+        // Redirect sesuai role
+        if ($user->role === 'guru') {
+            return redirect()->route('guru.dashboard');
         }
 
-        if ($value === 'siswa') {
-            return redirect('siswa/register-siswa');
+        if ($user->role === 'siswa') {
+            return redirect()->route('siswa.dashboard');
         }
     }
 

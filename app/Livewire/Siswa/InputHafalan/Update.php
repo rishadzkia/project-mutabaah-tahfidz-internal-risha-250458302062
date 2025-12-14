@@ -5,10 +5,12 @@ namespace App\Livewire\Siswa\InputHafalan;
 use Livewire\Component;
 use App\Models\Hafalan;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
 class Update extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Update Hafalan')]
     public $itemId;
     public $name;
     public $surah;
