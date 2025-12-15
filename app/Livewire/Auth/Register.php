@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Auth;
 
-use Livewire\Component; 
+use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +32,7 @@ class Register extends Component
             'role' => $this->role,
         ]);
 
-        
+
 
         session()->flash('success', 'Akun berhasil dibuat! Silakan login.');
 
@@ -40,11 +40,11 @@ class Register extends Component
 
         // Redirect sesuai role
         if ($user->role === 'guru') {
-            return redirect()->route('guru.dashboard');
+            return redirect('/register-kedua');
         }
 
         if ($user->role === 'siswa') {
-            return redirect()->route('siswa.dashboard');
+            return redirect('/register-kedua');
         }
     }
 

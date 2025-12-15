@@ -8,7 +8,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Table; 
 
 class KutipanMotivasisTable
 {
@@ -16,16 +16,18 @@ class KutipanMotivasisTable
     {
         return $table
             ->columns([
-            TextColumn::make('user.name')
-              
-                ->sortable(),
-                ImageColumn::make('image_url')
+                TextColumn::make('user.name')
+
+                    ->sortable(),
+            TextColumn::make('image_url'),
+            ImageColumn::make('image_url')
                 ->label('Gambar')
-                ->getStateUsing(fn($record)=> asset('storage/motivasi/' . $record->image_url))
+                ->getStateUsing(fn($record) => asset('storage/' . $record->image_url))
                 ->square()
                 ->width(60)
                 ->height(60),
-                TextColumn::make('sumber')
+
+            TextColumn::make('sumber')
                     ->searchable(),
                 TextColumn::make('teks_kutipan')
                     ->searchable(),
@@ -33,7 +35,7 @@ class KutipanMotivasisTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at') 
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

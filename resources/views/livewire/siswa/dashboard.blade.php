@@ -40,7 +40,7 @@
             <div class="carousel-inner carousel-custom rounded-3 shadow-sm">
                  @foreach ($motivasi as $item)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <img src="{{ asset('/storage/motivasi/' . $item->image_url) }}" class="d-block w-100" alt="Slide 1">
+                    <img src="{{ asset('storage/' . $item->image_url) }}" class="d-block w-100" alt="Slide 1">
                 </div>
             
                   @endforeach

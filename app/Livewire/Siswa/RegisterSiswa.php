@@ -4,7 +4,7 @@ namespace App\Livewire\Siswa;
 
 use Livewire\Component;
 
-class RegirterSiswa extends Component
+class RegisterSiswa extends Component
 {
     public function render()
     {

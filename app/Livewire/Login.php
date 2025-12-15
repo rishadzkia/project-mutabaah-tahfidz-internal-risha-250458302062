@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Livewire; 
+namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
-class Login extends Component 
-
+class Login extends Component
 {
     #[Title('Login MutabaahQ')]
     public $email, $password;
@@ -21,18 +20,23 @@ class Login extends Component
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             session()->regenerate();
+
             $user = Auth::user();
+
             if ($user->role === 'admin') {
                 return redirect('/admin');
-            
-        } elseif ($user->role === 'guru') {
-                return redirect()->route('guru.dashboard');
-            } elseif ($user->role === 'siswa') {
-                return redirect()->route('siswa.dashboard'); 
             }
 
-            // Default redirect jika role tidak dikenali
-            return redirect()->route('home');
+            if ($user->role === 'guru') {
+                return redirect()->route('guru.dashboard');
+            }
+
+            if ($user->role === 'siswa') {
+                return redirect()->route('siswa.dashboard');
+            }
+
+            Auth::logout();
+            return redirect()->route('login');
         }
 
         $this->addError('email', 'Email atau password salah.');
@@ -42,12 +46,13 @@ class Login extends Component
     {
         return view('livewire.login');
     }
+
     public function logout()
     {
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
 
-        return redirect('/'); // redirect ke landing page
+        return redirect('/');
     }
 }

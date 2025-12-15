@@ -48,6 +48,13 @@
               </a>
               
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse"  href="{{ route('siswa.profile-siswa') }}" wire:navigate aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Profile-ku</span>
+                <i class="icon-control-play menu-icon"></i>
+              </a>
+              
+            </li>
             
            
            
