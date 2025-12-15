@@ -13,7 +13,7 @@
 
     @if ($pengumumans->isEmpty()) 
     <p class="text-center text-gray-500 italic mb-4">
-        Tidak ada pengumuman saat ini.
+        Tidak ada pengumuman saat ini. 
     </p>
 @endif
 

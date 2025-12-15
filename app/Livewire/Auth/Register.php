@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Auth;
 
-use Livewire\Component;
+use Livewire\Component; 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +31,6 @@ class Register extends Component
             'password' => Hash::make($this->password),
             'role' => $this->role,
         ]);
-
 
 
         session()->flash('success', 'Akun berhasil dibuat! Silakan login.');

@@ -24,6 +24,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->authGuard('web')
             ->id('admin')
             ->path('admin')
 
@@ -45,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
             )
             ->pages([
                 Dashboard::class,
+                
             ])
             ->discoverWidgets(
                 in: app_path('Filament/Widgets'),
