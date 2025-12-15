@@ -1,3 +1,37 @@
+<style>
+.scrolltotop{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    z-index: 9999;
+
+    animation-name: appear;
+    animation-timeline: scroll(y);
+
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #d5eff8, #ceccc0);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+    3%{
+        opacity: 0;
+    }
+    3.5%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+</style>
+
+
 <div x-data>
 
     <div class="col-lg-12 grid-margin stretch-card">
@@ -79,7 +113,7 @@
                                     'lulus'      => 'bg-success',
                                     'perbaikan'  => 'bg-warning text-dark',
                                     default      => 'bg-secondary',
-        };
+        }; 
     @endphp
 
     <span class="badge {{ $badgeClass }} px-3 py-2 text-capitalize">
@@ -90,9 +124,13 @@
                                 <td>{{ $item->created_at->format('d F Y') }}</td>
                             </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                        </tbody> 
+                    </table> 
                 </div>
+               <a href="#" wire:ignore>
+    <img src="{{ asset('img/backToTop.png') }}" 
+         class="scrolltotop">
+</a>
 
             </div>
         </div>
@@ -101,5 +139,5 @@
        
 
     </div>
-
+    
 </div>

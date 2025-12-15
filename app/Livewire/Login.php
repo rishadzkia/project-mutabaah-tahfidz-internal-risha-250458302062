@@ -1,31 +1,34 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire; 
 
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component; 
+use Livewire\Attributes\Title;
+use Livewire\Component;
+
 class Login extends Component 
+
 {
-    public $email, $password;  
+    #[Title('Login MutabaahQ')]
+    public $email, $password;
 
     public function login()
     {
-        $this->validate([ 
+        $this->validate([
             'email'    => 'required|email',
             'password' => 'required',
         ]);
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             session()->regenerate();
-
-            $user = Auth::user(); 
+            $user = Auth::user();
             if ($user->role === 'admin') {
-                return redirect()->route('filament.admin.pages.dashboard');
+                return redirect('/admin');
             
         } elseif ($user->role === 'guru') {
                 return redirect()->route('guru.dashboard');
-            } elseif ($user->role === 'siswa') {  
-                return redirect()->route('siswa.dashboard');
+            } elseif ($user->role === 'siswa') {
+                return redirect()->route('siswa.dashboard'); 
             }
 
             // Default redirect jika role tidak dikenali
@@ -38,5 +41,13 @@ class Login extends Component
     public function render()
     {
         return view('livewire.login');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+
+        return redirect('/'); // redirect ke landing page
     }
 }

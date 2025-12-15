@@ -5,10 +5,12 @@ namespace App\Livewire\Guru\Pengumuman;
 use Livewire\Component;
 use App\Models\Pengumuman;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
 class Update extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Update Pengumuman')]
     public $itemId;  // ID pengumuman
     public $name;
     public $judul;

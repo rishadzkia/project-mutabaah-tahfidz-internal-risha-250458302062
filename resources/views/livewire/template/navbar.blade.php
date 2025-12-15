@@ -4,8 +4,9 @@
             <h5 class="text-white">MutabaahQ</h5>
             <img src="assets/images/logo-light.svg" alt="logo-light" class="logo-light">
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" alt="logo" /></a>
+          
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" id="hamburgerBtn">
             <span class="icon-menu"></span>
           </button>
         </div>
@@ -15,7 +16,7 @@
            
 
            
-            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+            <li class="nav-item dropdown user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <img class="img-xs rounded-circle ms-2" src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" alt="Profile image"> <span class="font-weight-normal"> {{ Auth()->user()->name }}</span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -25,8 +26,19 @@
             </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="icon-menu"></span>
+            <span class="icon-menu" id="hamburgerIcon"></span>
           </button>
         </div>
         
       </nav>
+      <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("hamburgerBtn");
+    const icon = document.getElementById("hamburgerIcon");
+
+    btn.addEventListener("click", function () {
+      icon.classList.toggle("icon-menu");
+      icon.classList.toggle("icon-close");
+    });
+  });
+</script>

@@ -8,7 +8,7 @@ class RegirterSiswa extends Component
 {
     public function render()
     {
-        return view('livewire.siswa.regirter-siswa');
+        return view('livewire.siswa.register-siswa');
     }
 
     

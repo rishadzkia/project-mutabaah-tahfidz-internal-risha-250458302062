@@ -5,12 +5,14 @@ namespace App\Livewire\Guru\Pengumuman;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
  
 class Create extends Component
 
 {
     #[Layout('components.layouts.base')]
+    #[Title('Membuat Pengumuman')]
     public $name;      // Nama guru (user)
     public $guru_id;   // ID dari tabel guru
     public $judul;

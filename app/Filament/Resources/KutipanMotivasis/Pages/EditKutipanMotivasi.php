@@ -16,7 +16,7 @@ class EditKutipanMotivasi extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
+        return [ 
             DeleteAction::make(),
         ];
     }

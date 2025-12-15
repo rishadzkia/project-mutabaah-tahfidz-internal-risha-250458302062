@@ -6,11 +6,13 @@ use App\Models\Hafalan;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Dashboard Guru')]
     public $percentageDaily = [];
 
     public function mount()

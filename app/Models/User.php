@@ -25,7 +25,6 @@ class User extends Authenticatable implements HasAvatar
         'email',
         'password',
         'role',
-        'avatar_url',
     ];
 
     public function guru()

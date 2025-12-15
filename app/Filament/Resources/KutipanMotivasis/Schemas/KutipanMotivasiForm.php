@@ -24,9 +24,7 @@ class KutipanMotivasiForm
                     ->required()
                     ->maxSize(4096)
                     ->helperText('Ukuran maksimal file 4MB.')
-                    ->dehydrateStateUsing(function($state){
-                        return $state ? basename($state) : null;
-                    }),
+                    ,
                 Textarea::make('teks_kutipan')
                   
                     ->columnSpanFull(),

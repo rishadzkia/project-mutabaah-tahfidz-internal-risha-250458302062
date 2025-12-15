@@ -8,6 +8,6 @@ class RegirterGuru extends Component
 {
     public function render()
     {
-        return view('livewire.guru.regirter-guru');
+        return view('livewire.guru.register-guru');
     }
 }

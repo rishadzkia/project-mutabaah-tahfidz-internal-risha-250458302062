@@ -14,16 +14,18 @@
     style="background-color: #7ab8c3;"
 >
 
-    <!-- Container -->
+    <!-- Container --> 
     <div class="relative bg-black/40 backdrop-blur-sm p-6 w-72 rounded-2xl text-center">
 
         <!-- Profile Image -->
-        <img src="{{ asset('img/m3.png') }}" 
-             class="absolute w-20 h-20 top-[-40px] left-1/2 -translate-x-1/2 rounded-full object-cover shadow-lg">
+       <a href="/">
+    <img src="{{ asset('img/m3.png') }}" 
+         class="absolute w-20 h-20 top-[-40px] left-1/2 -translate-x-1/2 rounded-full object-cover shadow-lg">
+</a>
 
-        <h1 class="text-white text-xl mt-10 mb-5 font-semibold">Register</h1>
+        <h1 class="text-white text-xl mt-10 mb-5 font-semibold">Registrasi</h1>
 
-        <form action="#" wire:submit.prevent="register" method="POST" class="flex flex-col items-center">
+        <form wire:submit.prevent="register" method="POST" class="flex flex-col items-center">
 
             <!-- Input Nama -->
             <input 
@@ -54,7 +56,7 @@
             wire:model="role"
             class="w-full bg-transparent border-b-2 border-white text-white px-2 py-2 mb-4 focus:outline-none"
         >
-            <option value="" class="text-black">Pilih Role</option>
+            <option value="" class="text-black">Pilih Status</option>
                 <option value="guru" class="text-black">Guru</option>
                 <option value="siswa" class="text-black">Siswa</option>
         </select>
@@ -74,77 +76,6 @@
             Sudah punya akun? Login
         </a>
 
-@if ($role === 'guru')
-<input type="file" wire:model="foto_url" class="w-full text-white mb-4
-           file:bg-white file:text-black file:rounded-lg 
-           file:px-3 file:py-1 file:border-none
-           bg-transparent border-b-2 border-white 
-           focus:outline-none"/>
-            <!-- Mapel Diampu -->
-            <input 
-                type="text" 
-                placeholder="Mapel Diampu"
-                wire:model="mapel_diampu"
-                class="w-full bg-transparent border-b-2 border-white text-white 
-                       px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
-            >
-
-            <!-- Mulai Kerja -->
-            <input 
-                type="date"
-                wire:model="mulai_kerja"
-                class="w-full bg-transparent border-b-2 border-white text-white 
-                       px-2 py-2 mb-4 focus:outline-none
-                       [color-scheme:dark]"
-            >
-        @endif
-
-        @if ($role === 'siswa')
-            <label class="text-white mb-1 text-sm self-start">Upload Foto</label>
-
-            <input 
-                type="file" 
-                wire:model="image"
-                class="w-full text-white mb-4
-                       file:bg-white file:text-black file:rounded-lg 
-                       file:px-3 file:py-1 file:border-none
-                       bg-transparent border-b-2 border-white 
-                       focus:outline-none"
-            >
-
-            <!-- Preview -->
-            @if ($image)
-                <img src="{{ $image->temporaryUrl() }}" 
-                     class="w-24 h-24 rounded-lg object-cover mb-4 shadow">
-            @endif
-
-            <!-- Kelas -->
-            <input 
-                type="text" 
-                placeholder="Kelas"
-                wire:model="kelas"
-                class="w-full bg-transparent border-b-2 border-white text-white 
-                       px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
-            >
-
-            <!-- Angkatan -->
-            <input 
-                type="text" 
-                placeholder="Angkatan"
-                wire:model="angkatan"
-                class="w-full bg-transparent border-b-2 border-white text-white 
-                       px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
-            >
-
-            <!-- Guru ID -->
-            <input 
-                type="text" 
-                placeholder="Guru ID"
-                wire:model="guru_id"
-                class="w-full bg-transparent border-b-2 border-white text-white 
-                       px-2 py-2 mb-4 focus:outline-none placeholder-gray-300"
-            >
-        @endif
     </div>
 
 </body>

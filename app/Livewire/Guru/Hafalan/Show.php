@@ -7,6 +7,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Livewire\Attributes\Title;
 
 class Show extends Component
 {
@@ -14,10 +15,11 @@ class Show extends Component
     public $filterMonth = '';
     public $filterDate = '';
 
-    #[Layout('components.layouts.base')]
+    #[Layout('components.layouts.base')] 
+    #[Title('Halaman Hafalan')]
     public function render()
     {
-        $query = Hafalan::with(['siswa.user'])
+        $query = Hafalan::with(['siswa.user']) 
             ->whereHas('siswa.user', function ($q) {
                 $q->where('name', 'like', '%' . $this->search . '%');
             });

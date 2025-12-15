@@ -6,11 +6,13 @@ use App\Models\Hafalan;
 use App\Models\SiswaTertanda;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Show extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Response Hafalan')]
     public $responseHafalan;
     public $selectedStatus = [];
     public $search = '';

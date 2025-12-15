@@ -5,11 +5,13 @@ namespace App\Livewire\Guru\SiswaTertanda;
 use App\Models\SiswaTertanda; 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Show extends Component
 {
     #[Layout('components.layouts.base')]
+    #[Title('Halaman Siswa Tertanda')]
     
     public function render()
     {
